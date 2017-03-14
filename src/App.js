@@ -25,7 +25,7 @@ var API_ROUTE = process.env.API_ROUTE || "";
 console.log('##############################################  ' + API_ROUTE);
 
 const App = () => (
-    <Admin title="Receipt-OCR Admin" dashboard={Dashboard} restClient={postgrestClient(API_ROUTE)}>
+    <Admin title="Receipt-OCR Admin" dashboard={Dashboard} restClient={postgrestClient("/api")}>
         <Resource name="product" list={ProductList} show={ProductEdit} edit={ProductEdit} create={ProductCreate} remove={Delete} icon={ProductIcon}/>
         <Resource name="receipt" list={ReceiptList} show={ReceiptShow} edit={ReceiptShow} remove={Delete} icon={ReceiptIcon}/>
         <Resource name="receiptitem" list={ReceiptItemList} show={ReceiptItemEdit} edit={ReceiptItemEdit} create={ReceiptItemCreate} remove={Delete} icon={ReceiptItemIcon} options={{ label: 'Receipt Items' }}/>
