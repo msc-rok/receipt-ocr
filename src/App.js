@@ -20,9 +20,10 @@ import { OCRResultList, OCRResultShow} from './ocrresult';
 import { ProductList, ProductEdit, ProductCreate} from './product';
 import { ReceiptItemList, ReceiptItemEdit, ReceiptItemCreate } from './receiptitem';
 import { ReceiptList,ReceiptShow } from './receipt';
+var API_ROUTE = process.env.API_ROUTE || "";
 
 const App = () => (
-    <Admin title="Receipt-OCR Admin" dashboard={Dashboard} restClient={postgrestClient("")}>
+    <Admin title="Receipt-OCR Admin" dashboard={Dashboard} restClient={postgrestClient(API_ROUTE)}>
         <Resource name="product" list={ProductList} show={ProductEdit} edit={ProductEdit} create={ProductCreate} remove={Delete} icon={ProductIcon}/>
         <Resource name="receipt" list={ReceiptList} show={ReceiptShow} edit={ReceiptShow} remove={Delete} icon={ReceiptIcon}/>
         <Resource name="receiptitem" list={ReceiptItemList} show={ReceiptItemEdit} edit={ReceiptItemEdit} create={ReceiptItemCreate} remove={Delete} icon={ReceiptItemIcon} options={{ label: 'Receipt Items' }}/>
