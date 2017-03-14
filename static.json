@@ -6,7 +6,7 @@
   },
    "proxies": {
     "/api/": {
-      "origin": "${RECEIPT_OCR_API}"
+      "origin": "${API_URL}"
     }
   }
 }
