@@ -22,7 +22,7 @@ import { ReceiptItemList, ReceiptItemEdit, ReceiptItemCreate } from './receiptit
 import { ReceiptList,ReceiptShow } from './receipt';
 
 const App = () => (
-    <Admin title="Receipt-OCR Admin" dashboard={Dashboard} restClient={postgrestClient(process.env.RECEIPT_OCR_API)}>
+    <Admin title="Receipt-OCR Admin" dashboard={Dashboard} restClient={postgrestClient("/api")}>
         <Resource name="product" list={ProductList} show={ProductEdit} edit={ProductEdit} create={ProductCreate} remove={Delete} icon={ProductIcon}/>
         <Resource name="receipt" list={ReceiptList} show={ReceiptShow} edit={ReceiptShow} remove={Delete} icon={ReceiptIcon}/>
         <Resource name="receiptitem" list={ReceiptItemList} show={ReceiptItemEdit} edit={ReceiptItemEdit} create={ReceiptItemCreate} remove={Delete} icon={ReceiptItemIcon} options={{ label: 'Receipt Items' }}/>
