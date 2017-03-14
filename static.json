@@ -5,7 +5,7 @@
     "/**": "index.html"
   },
    "proxies": {
-    "/api/": {
+    "/**": {
       "origin": "${RECEIPT_OCR_API}"
     }
   }
