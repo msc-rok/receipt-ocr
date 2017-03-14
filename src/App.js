@@ -22,7 +22,7 @@ import { ReceiptItemList, ReceiptItemEdit, ReceiptItemCreate } from './receiptit
 import { ReceiptList,ReceiptShow } from './receipt';
 var API_ROUTE = process.env.API_ROUTE || "";
 
-console.log(API_ROUTE);
+console.log('##############################################  ' + API_ROUTE);
 
 const App = () => (
     <Admin title="Receipt-OCR Admin" dashboard={Dashboard} restClient={postgrestClient(API_ROUTE)}>
