@@ -20,9 +20,14 @@ import { OCRResultList, OCRResultShow} from './ocrresult';
 import { ProductList, ProductEdit, ProductCreate} from './product';
 import { ReceiptItemList, ReceiptItemEdit, ReceiptItemCreate } from './receiptitem';
 import { ReceiptList,ReceiptShow } from './receipt';
-var API_ROUTE = process.env.API_ROUTE || "/api";
 
-console.log('##############################################  ' + API_ROUTE);
+var API_ROUTE = "";
+if(process.env.NODE_ENV=='production'){
+    API_ROUTE = "/api";
+};
+
+console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
+console.log('API_ROUTE: ' + API_ROUTE);
 
 const App = () => (
     <Admin title="Receipt-OCR Admin" dashboard={Dashboard} restClient={postgrestClient(API_ROUTE)}>
