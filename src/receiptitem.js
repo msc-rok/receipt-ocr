@@ -2,6 +2,9 @@
 import React from 'react';
 import { List, Filter,Edit, Create, SimpleForm, Datagrid,TextInput, TextField ,EditButton, ReferenceField,ReferenceInput, NumberInput, SelectInput, DisabledInput,AutocompleteInput} from 'admin-on-rest/lib/mui';
 
+import Icon from 'material-ui/svg-icons/action/euro-symbol';
+export const ReceiptItemIcon = Icon;
+
 const ReceiptItemFilter = (props) => (
     <Filter {...props}>
         <ReferenceInput label="Product" source="product" reference="product" perPage={100} sort={{ field: 'name', order: 'ASC' }} alwaysOn>

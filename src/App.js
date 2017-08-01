@@ -1,41 +1,53 @@
-// in src/App.js
-import React from 'react';
-import { Admin, Resource } from 'admin-on-rest';
-import { Delete } from 'admin-on-rest/lib/mui';
+import 'babel-polyfill';
+import React, { Component } from 'react';
+import { Admin, Delete, Resource } from 'admin-on-rest';
 
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-// <Admin theme={getMuiTheme(darkBaseTheme)}
+import './App.css';
 
+import authClient from './authClient';
+import sagas from './sagas';
+import themeReducer from './themeReducer';
+import Login from './Login';
+import Layout from './Layout';
+import Menu from './Menu';
+import { Dashboard } from './dashboard';
+import customRoutes from './routes';
+import translations from './i18n';
 
-import ReceiptIcon from 'material-ui/svg-icons/action/receipt'; //shopping-cart
-import ReceiptItemIcon from 'material-ui/svg-icons/action/euro-symbol';
-import OCRResultIcon from 'material-ui/svg-icons/action/find-in-page';
-import ProductIcon from 'material-ui/svg-icons/action/redeem';
-
+// custom
+import constants from './constants.js';
 import postgrestClient from './postgrest-client';
-import Dashboard from './dashboard';
 
-import { OCRResultList, OCRResultShow} from './ocrresult';
-import { ProductList, ProductEdit, ProductCreate} from './product';
-import { ReceiptItemList, ReceiptItemEdit, ReceiptItemCreate } from './receiptitem';
-import { ReceiptList,ReceiptShow } from './receipt';
+import { OCRResultList, OCRResultShow, OCRResultIcon } from './ocrresult';
+import { ProductList, ProductEdit, ProductCreate, ProductIcon } from './product';
+import { ReceiptItemList, ReceiptItemEdit, ReceiptItemCreate, ReceiptItemIcon } from './receiptitem';
+import { ReceiptList, ReceiptShow, ReceiptIcon } from './receipt';
 
-var API_ROUTE = "";
-if(process.env.NODE_ENV=='production'){
-    API_ROUTE = "/api";
-};
+var API_ROUTE = "/api";
+if (constants.IS_DEVELOPMENT) API_ROUTE = "";
 
-console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
-console.log('API_ROUTE: ' + API_ROUTE);
-
-const App = () => (
-    <Admin title="Receipt-OCR Admin" dashboard={Dashboard} restClient={postgrestClient(API_ROUTE)}>
-        <Resource name="product" list={ProductList} show={ProductEdit} edit={ProductEdit} create={ProductCreate} remove={Delete} icon={ProductIcon}/>
-        <Resource name="receipt" list={ReceiptList} show={ReceiptShow} edit={ReceiptShow} remove={Delete} icon={ReceiptIcon}/>
-        <Resource name="receiptitem" list={ReceiptItemList} show={ReceiptItemEdit} edit={ReceiptItemEdit} create={ReceiptItemCreate} remove={Delete} icon={ReceiptItemIcon} options={{ label: 'Receipt Items' }}/>
-        <Resource name="ocrresult" list={OCRResultList} show={OCRResultShow} edit={OCRResultShow} remove={Delete} icon={OCRResultIcon} options={{ label: 'OCR-Results' }}/>
-    </Admin>
-);
+class App extends Component {
+    render() {
+        return (
+            <Admin title="Receipt-OCR Admin"
+                restClient={postgrestClient(API_ROUTE)}
+                customReducers={{ theme: themeReducer }}
+                customSagas={sagas}
+                customRoutes={customRoutes}
+                authClient={authClient}
+                dashboard={Dashboard}
+                loginPage={Login}
+                appLayout={Layout}
+                menu={Menu}
+                messages={translations}
+            >
+                <Resource name="product" list={ProductList} show={ProductEdit} edit={ProductEdit} create={ProductCreate} remove={Delete} icon={ProductIcon} />
+                <Resource name="receipt" list={ReceiptList} show={ReceiptShow} edit={ReceiptShow} remove={Delete} icon={ReceiptIcon} />
+                <Resource name="receiptitem" list={ReceiptItemList} show={ReceiptItemEdit} edit={ReceiptItemEdit} create={ReceiptItemCreate} remove={Delete} icon={ReceiptItemIcon} />
+                <Resource name="ocrresult" list={OCRResultList} show={OCRResultShow} remove={Delete} icon={OCRResultIcon} />
+            </Admin>
+        );
+    }
+}
 
 export default App;
