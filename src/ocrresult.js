@@ -38,9 +38,8 @@ export const OCRResultShow = (props) => (
                 <RichTextField source="result.text" label="Result" />
             </FormTab>
             <FormTab label="Picture">
-                <UrlField source="url">
-                    <ImageField source="url" label="Picture" />
-                </UrlField>
+                <ImageField source="url" label="Picture" />
+                <UrlField source="url"/>
             </FormTab>
         </TabbedForm>
     </Show>
