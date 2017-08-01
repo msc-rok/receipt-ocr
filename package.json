@@ -1,22 +1,42 @@
 {
   "name": "receipt-ocr",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
-    "admin-on-rest": "^0.9.1",
     "aor-postgrest-client": "^0.1.0",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "admin-on-rest": "~1.2.0",
+    "aor-language-french": "^1.8.0",
+    "aor-rich-text-input": "^1.0.0",
+    "material-ui": "~0.17.4",
+    "prop-types": "~15.5.7",
+    "react": "~15.5.4",
+    "react-dom": "~15.5.4",
+    "react-redux": "~5.0.4",
+    "react-router-dom": "~4.1.0",
+    "react-tap-event-plugin": "~2.0.1",
+    "redux-form": "~6.6.2",
+    "redux-saga": "~0.14.6"
   },
   "devDependencies": {
-    "babel-cli": "^6.23.0",
-    "react-scripts": "0.9.5"
+    "babel-eslint": "^7.1.1",
+    "babel-polyfill": "^6.16.0",
+    "eslint": "^3.10.2",
+    "eslint-config-airbnb": "15.0.1",
+    "eslint-config-airbnb-base": "~11.2.0",
+    "eslint-import-resolver-node": "^0.2.3",
+    "eslint-module-utils": "^2.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "5.0.1",
+    "eslint-plugin-react": "~7.0.1",
+    "gh-pages": "^0.12.0",
+    "react-scripts": "1.0.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build"
   },
   "proxy": "http://localhost:5000"
 }

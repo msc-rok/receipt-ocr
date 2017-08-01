@@ -2,6 +2,9 @@
 import React from 'react';
 import { List, Edit, Create, Filter, Datagrid, ReferenceField, TextField, EditButton, ShowButton, DisabledInput, LongTextInput, ReferenceInput, SelectInput, SimpleForm, TextInput, TabbedForm, FormTab, ReferenceManyField } from 'admin-on-rest/lib/mui';
 
+import Icon from 'material-ui/svg-icons/action/redeem';
+export const ProductIcon = Icon;
+
 const ProductFilter = (props) => (
     <Filter {...props}>
         <TextInput label="Product Name..." source="name" alwaysOn />
