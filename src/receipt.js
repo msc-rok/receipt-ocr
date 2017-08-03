@@ -36,7 +36,7 @@ export const ReceiptList = (props) => (
                         </ReferenceField>
                 </SingleFieldList>
             </ReferenceManyField>
-            <ShowButton />
+            <EditButton />
         </Datagrid>
     </List>
 );
@@ -47,7 +47,7 @@ this.state = {
 }
 
 export const ReceiptEdit = (props) => (
-    <Edit {...props} actions={<OcrResultEditActions />}>
+    <Edit {...props} /* actions={<OcrResultEditActions />}*/>
         <TabbedForm>
             <FormTab label="Receipt">
                 <DisabledInput source="id" />
@@ -78,7 +78,7 @@ export const ReceiptEdit = (props) => (
                         <NumberField source="quality" />
                         <NumberField source="psm" />
                         <TextField source="lang" />
-                        <ShowButton resource="ocrresult" record="id" />
+                        <ShowButton />
                     </Datagrid>
                 </ReferenceManyField>
             </FormTab>
