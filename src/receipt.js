@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { List, Show, Datagrid, ImageInput, ImageField, DateField, TextField, ReferenceManyField, DisabledInput, TabbedForm, FormTab, ReferenceField, EditButton, ShowButton, NumberField, RichTextField, UrlField } from 'admin-on-rest/lib/mui';
+import { List, Show,Edit, Datagrid, SingleFieldList, ChipField, ImageInput, ImageField, DateField, TextField, ReferenceManyField, DisabledInput, TabbedForm, FormTab, ReferenceField, EditButton, ShowButton, NumberField, RichTextField, UrlField } from 'admin-on-rest/lib/mui';
 
 import { CardActions } from 'material-ui/Card';
 import { ListButton, DeleteButton } from 'admin-on-rest';
@@ -29,18 +29,25 @@ export const ReceiptList = (props) => (
             <TextField source="amount" />
             <DateField source="date" />
             <TextField source="user" />
+            <ReferenceManyField reference="receiptitem" target="receipt">
+                <SingleFieldList>
+                    <ReferenceField label="Product" source="product" reference="product">
+                            <ChipField source="name" />
+                        </ReferenceField>
+                </SingleFieldList>
+            </ReferenceManyField>
             <ShowButton />
         </Datagrid>
     </List>
 );
 
 this.state = {
-      accepted: [],
-      rejected: []
-    }
+    accepted: [],
+    rejected: []
+}
 
-export const ReceiptShow = (props) => (
-    <Show {...props} actions={<OcrResultEditActions />}>
+export const ReceiptEdit = (props) => (
+    <Edit {...props} actions={<OcrResultEditActions />}>
         <TabbedForm>
             <FormTab label="Receipt">
                 <DisabledInput source="id" />
@@ -76,5 +83,5 @@ export const ReceiptShow = (props) => (
                 </ReferenceManyField>
             </FormTab>
         </TabbedForm>
-    </Show>
+    </Edit>
 );

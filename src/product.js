@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { List, Edit, Create, Filter, Datagrid, ReferenceField, TextField, EditButton, ShowButton, DisabledInput, LongTextInput, ReferenceInput, SelectInput, SimpleForm, TextInput, TabbedForm, FormTab, ReferenceManyField } from 'admin-on-rest/lib/mui';
+import { List, Edit, Create, Filter, SingleFieldList, ChipField, SelectArrayInput, Datagrid, ReferenceField, TextField, EditButton, ShowButton, DisabledInput, LongTextInput, ReferenceInput, SelectInput, SimpleForm, TextInput, TabbedForm, FormTab, ReferenceManyField } from 'admin-on-rest/lib/mui';
 
 import Icon from 'material-ui/svg-icons/action/redeem';
 export const ProductIcon = Icon;
@@ -20,6 +20,10 @@ export const ProductList = (props) => (
         <Datagrid>
             <TextField source="id" />
             <TextField source="name" />
+            <TextField source="gtin" />
+            <TextField source="category" />
+            <TextField source="subcategory" />
+            <ChipField source="criterias" />
             <EditButton />
         </Datagrid>
     </List>
@@ -31,6 +35,11 @@ export const ProductEdit = (props) => (
             <FormTab label="Product" >
                 <DisabledInput source="id" />
                 <TextInput source="name" />
+                <TextInput source="gtin" />
+                <TextInput source="category" />
+                <TextInput source="subcategory" />
+                <SelectArrayInput source="criterias" />
+
             </FormTab>
             <FormTab label="Receipt Items">
                 <ReferenceManyField reference="receiptitem" target="product" addLabel={false}>
