@@ -21,7 +21,7 @@ import postgrestClient from './postgrest-client';
 import { OCRResultList, OCRResultShow, OCRResultIcon } from './ocrresult';
 import { ProductList, ProductEdit, ProductCreate, ProductIcon } from './product';
 import { ReceiptItemList, ReceiptItemEdit, ReceiptItemCreate, ReceiptItemIcon } from './receiptitem';
-import { ReceiptList, ReceiptShow, ReceiptIcon } from './receipt';
+import { ReceiptList, ReceiptEdit, ReceiptIcon } from './receipt';
 
 var API_ROUTE = "/api";
 if (constants.IS_DEVELOPMENT) API_ROUTE = "";
@@ -42,7 +42,7 @@ class App extends Component {
                 messages={translations}
             >
                 <Resource name="product" list={ProductList} show={ProductEdit} edit={ProductEdit} create={ProductCreate} remove={Delete} icon={ProductIcon} />
-                <Resource name="receipt" list={ReceiptList} show={ReceiptShow} edit={ReceiptShow} remove={Delete} icon={ReceiptIcon} />
+                <Resource name="receipt" list={ReceiptList} show={ReceiptEdit} edit={ReceiptEdit} remove={Delete} icon={ReceiptIcon} />
                 <Resource name="receiptitem" list={ReceiptItemList} show={ReceiptItemEdit} edit={ReceiptItemEdit} create={ReceiptItemCreate} remove={Delete} icon={ReceiptItemIcon} />
                 <Resource name="ocrresult" list={OCRResultList} show={OCRResultShow} remove={Delete} icon={OCRResultIcon} />
             </Admin>
